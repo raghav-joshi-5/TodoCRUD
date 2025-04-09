@@ -15,6 +15,9 @@
               class="form-control"
               pattern="[a-zA-Z]*"
             />
+            <ng-container *ngIf="!fname.touched && stdForm.submitted">
+              <strong class="text-danger">Please Fill Fname field</strong>
+            </ng-container>
           </div>
 
           <strong
@@ -42,6 +45,9 @@
               class="form-control"
               pattern="[a-zA-Z]*"
             />
+            <ng-container *ngIf="!lname.touched && stdForm.submitted">
+              <strong class="text-danger">Please Fill Lname field</strong>
+            </ng-container>
           </div>
           <strong
             class="text-danger"
@@ -69,6 +75,9 @@
               class="form-control"
               pattern="^[a-zA-Z0-9.-]+@[a-zA-Z0-9-.]+\.[a-zA-Z]{2,100}$"
             />
+            <ng-container *ngIf="!email.touched && stdForm.submitted">
+              <strong class="text-danger">Please Fill email field</strong>
+            </ng-container>
           </div>
           <strong
             class="text-danger"
@@ -95,6 +104,9 @@
               class="form-control"
               pattern="^\d{10}$"
             />
+            <ng-container *ngIf="!contact.touched && stdForm.submitted">
+              <strong class="text-danger">Please Fill contact field</strong>
+            </ng-container>
           </div>
           <strong
             class="text-danger"
@@ -121,6 +133,9 @@
           >
             Update student
           </button>
+          <ng-container *ngIf="!stdForm.touched && stdForm.submitted">
+            <strong class="text-danger">Form is Empty</strong>
+          </ng-container>
         </form>
       </div>
     </div>
