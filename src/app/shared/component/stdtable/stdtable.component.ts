@@ -15,7 +15,10 @@ export class StdtableComponent implements OnInit {
   ngOnInit(): void {}
 
   onRemove(std: Istd) {
-    this._stdService.onRemove(std);
+    let getconfirm = confirm('Are you sure you want to remove this student');
+    if (getconfirm) {
+      this._stdService.onRemove(std);
+    }
   }
 
   onEdit(std: Istd) {
