@@ -1,0 +1,134 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <form #stdForm="ngForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="fname" class="text-dark">First Name</label>
+            <input
+              required
+              type="text"
+              id="fname"
+              name="fname"
+              #fname="ngModel"
+              ngModel
+              class="form-control"
+              pattern="[a-zA-Z]*"
+            />
+          </div>
+
+          <strong
+            class="text-danger"
+            *ngIf="fname.touched && fname.hasError('required')"
+          >
+            First Name is required field
+          </strong>
+          <strong
+            class="text-danger"
+            *ngIf="fname.dirty && fname.hasError('pattern')"
+          >
+            must be latter only
+          </strong>
+
+          <div class="form-group">
+            <label for="lname" class="text-dark">Last Name</label>
+            <input
+              required
+              type="text"
+              id="lname"
+              name="lname"
+              #lname="ngModel"
+              ngModel
+              class="form-control"
+              pattern="[a-zA-Z]*"
+            />
+          </div>
+          <strong
+            class="text-danger"
+            *ngIf="lname.touched && lname.hasError('required')"
+          >
+            last Name is required field
+          </strong>
+
+          <strong
+            class="text-danger"
+            *ngIf="lname.dirty && lname.hasError('pattern')"
+          >
+            must be latter only
+          </strong>
+
+          <div class="form-group">
+            <label for="email" class="text-dark">Email</label>
+            <input
+              required
+              type="text"
+              id="email"
+              name="email"
+              #email="ngModel"
+              ngModel
+              class="form-control"
+              pattern="^[a-zA-Z0-9.-]+@[a-zA-Z0-9-.]+\.[a-zA-Z]{2,100}$"
+            />
+          </div>
+          <strong
+            class="text-danger"
+            *ngIf="email.touched && email.hasError('required')"
+          >
+            Email Name is required field
+          </strong>
+          <strong
+            class="text-danger"
+            *ngIf="email.dirty && email.hasError('pattern')"
+          >
+            Email Name is {{ "abc@gmail.com" }} format only
+          </strong>
+
+          <div class="form-group">
+            <label for="contact" class="text-dark">Contact</label>
+            <input
+              required
+              type="text"
+              id="contact"
+              name="contact"
+              #contact="ngModel"
+              ngModel
+              class="form-control"
+              pattern="^\d{10}$"
+            />
+          </div>
+          <strong
+            class="text-danger"
+            *ngIf="contact.touched && contact.hasError('required')"
+          >
+            contact Name is required field
+          </strong>
+
+          <strong
+            class="text-danger"
+            *ngIf="contact.dirty && contact.hasError('pattern')"
+          >
+            contact number in 10 digit only
+          </strong>
+          <br />
+          <button *ngIf="!isinEditMode" class="btn btn-sm btn-primary">
+            Add student
+          </button>
+          <button
+            *ngIf="isinEditMode"
+            type="button"
+            (click)="onUpdate()"
+            class="btn btn-sm btn-primary"
+          >
+            Update student
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <app-stdtable
+      [studentData]="studentArr"
+      (sendEditObj)="onEdit($event)"
+    ></app-stdtable>
+  </div>
+</div>
